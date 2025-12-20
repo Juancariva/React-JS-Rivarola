@@ -1,15 +1,14 @@
 import NavBar from "./components/containers/NavBar/index.jsx";
 import ItemListContainer from "./components/containers/ItemListContainer/index.jsx";
-import ItemDetailContainer from './components/containers/ItemDetailContainer/index.jsx';
-import './index.css'
+import ItemDetailContainer from "./components/containers/ItemDetailContainer/index.jsx";
+import "./index.css";
 import { Routes, Route } from "react-router";
 
 function App() {
-
   return (
     <>
       <NavBar />
-      
+
       <Routes>
         {/* Todos los productos */}
         <Route
@@ -18,15 +17,10 @@ function App() {
         />
 
         {/* Productos filtrados por categoria */}
-        <Route
-          path="/category/:categoryId"
-          element={<ItemListContainer />}
-        />
+        <Route path="/category/:categoryId" element={<ItemListContainer />} />
 
         {/* Detalle de un producto */}
-        <Route 
-        path="/item/:id" 
-        element={<ItemDetailContainer />} />
+        <Route path="/item/:id" element={<ItemDetailContainer />} />
 
         {/* Ruta para manejar 404 */}
         <Route
@@ -38,4 +32,4 @@ function App() {
   );
 }
 
-export default App
+export default App;

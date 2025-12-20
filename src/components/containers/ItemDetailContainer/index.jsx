@@ -4,7 +4,7 @@ import { getProductById } from "../../../data/products";
 import ItemDetail from "../ItemDetail";
 
 function ItemDetailContainer() {
-  const { id } = useParams();    
+  const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
 

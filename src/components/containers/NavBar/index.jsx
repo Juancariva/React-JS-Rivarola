@@ -8,13 +8,13 @@ function NavBar() {
     <header className="navbar">
       <nav className="nav-inner">
         <NavLink to="/" className="brand">
-          <img 
+          <img
             src={Logo}
             alt="Logo de la tienda"
             className="logo"
             width={40}
             height={40}
-          />         
+          />
         </NavLink>
 
         <ul className="nav-links">

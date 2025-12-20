@@ -111,26 +111,26 @@ button:focus-visible {
 }
 
 .item-card {
-  background: #111218;                           
-  border: 1px solid rgba(255,255,255,0.08);      
-  border-radius: 14px;                           
-  padding: 16px;                                 
-  margin-bottom: 30px;                           
-  max-width: auto;                              
-  margin-left: auto;                             
+  background: #111218;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 30px;
+  max-width: auto;
+  margin-left: auto;
   margin-right: auto;
 }
 
 .item-image {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain;              
+  object-fit: contain;
 }
 
 .item-image-wrapper {
-  width: 100%;                   
+  width: 100%;
   justify-content: center;
-  background: #0f1117;               
+  background: #0f1117;
 }
 
 .item-detail-link {
@@ -140,12 +140,11 @@ button:focus-visible {
   text-decoration: none;
   padding: 8px 14px;
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 .item-detail-link:hover {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
 }
-
 
 .item-detail-container {
   max-width: 1080px;
@@ -163,7 +162,7 @@ button:focus-visible {
   background: #111218;
   border-radius: 16px;
   padding: 16px;
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;

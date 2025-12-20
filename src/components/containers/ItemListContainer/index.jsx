@@ -26,20 +26,13 @@ function ItemListContainer({ greeting }) {
       .finally(() => {
         setLoading(false);
       });
-  }, [categoryId]);;
-
+  }, [categoryId]);
 
   return (
     <main className="item-list-container">
-      {greeting && !categoryId && (
-        <h1 className="hero-title">{greeting}</h1>
-      )}
+      {greeting && !categoryId && <h1 className="hero-title">{greeting}</h1>}
 
-      {categoryId && (
-        <h2 className="hero-title">
-          Categoría: {categoryId}
-        </h2>
-      )}
+      {categoryId && <h2 className="hero-title">Categoría: {categoryId}</h2>}
 
       {loading ? (
         <p className="loading-text">Cargando productos...</p>

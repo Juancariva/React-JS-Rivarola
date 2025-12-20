@@ -3,7 +3,7 @@ navbar {
   top: 0;
   background: rgba(17, 18, 24, 0.8);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   z-index: 10;
 }
 .nav-inner {
@@ -46,5 +46,5 @@ navbar {
   border-radius: 8px;
 }
 .nav-link:hover {
-  background: rgba(255,255,255,0.06);
+  background: rgba(255, 255, 255, 0.06);
 }
