@@ -39,7 +39,7 @@ function ItemListContainer({ greeting }) {
       ) : (
         <section className="item-list">
           {products.map((product) => (
-            <Item key={product.id} product={product} />
+            <Item key={product.docId} product={product} />
           ))}
         </section>
       )}

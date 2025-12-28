@@ -1,51 +1,67 @@
-const URL_API = "https://fakestoreapi.com/products";
+// src/data/products.js
+import { db } from "../utils/firebase";
 
-// mapa de slugs -> categorías reales de la API
-const CATEGORY_MAP = {
-  hombre: "men's clothing",
-  mujer: "women's clothing",
-  electronica: "electronics",
-  joyeria: "jewelery",
-};
+import {
+  collection,
+  getDocs,
+  getDoc,
+  doc,
+  query,
+  where,
+} from "firebase/firestore";
 
+export const productosCol = collection(db, "productos");
+
+// Lista completa
 export const getProducts = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      fetch(URL_API)
-        .then((res) => {
-          if (!res.ok) throw new Error("Error al obtener productos");
-          return res.json();
+      getDocs(productosCol)
+        .then((snapshot) => {
+          const products = snapshot.docs.map((d) => ({
+            docId: d.id,
+            ...d.data(),
+          }));
+          resolve(products);
         })
-        .then(resolve)
         .catch(reject);
     }, 800);
   });
 };
 
+// Lista filtrada por categoría
 export const getProductsByCategory = (categoryId) => {
   return new Promise((resolve, reject) => {
-    const apiCategory = CATEGORY_MAP[categoryId] ?? categoryId;
+    setTimeout(() => {
+      const q = query(productosCol, where("category", "==", categoryId));
 
-    getProducts()
-      .then((products) => {
-        const filtered = products.filter(
-          (product) => product.category === apiCategory
-        );
-        resolve(filtered);
-      })
-      .catch(reject);
+      getDocs(q)
+        .then((snapshot) => {
+          const products = snapshot.docs.map((d) => ({
+            docId: d.id,
+            ...d.data(),
+          }));
+          resolve(products);
+        })
+        .catch(reject);
+    }, 800);
   });
 };
 
+// Detalle por id del documento
 export const getProductById = (id) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      fetch(`${URL_API}/${id}`)
-        .then((res) => {
-          if (!res.ok) throw new Error("Error al obtener producto");
-          return res.json();
+      const ref = doc(db, "productos", id);
+
+      getDoc(ref)
+        .then((snap) => {
+          if (!snap.exists()) {
+            resolve(null);
+            return;
+          }
+          resolve({ id: snap.id, ...snap.data() });
         })
-        .then(resolve)
         .catch(reject);
     }, 800);
   });
