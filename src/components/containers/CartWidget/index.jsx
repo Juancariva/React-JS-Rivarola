@@ -1,12 +1,14 @@
-function CartWidget() {
-  const count = 2;
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
+import { NavLink } from "react-router";
 
+function CartWidget() {
+  const { totalUnits } = useContext(CartContext);
   return (
-    <button aria-label="Carrito" className="cart-btn" title="Carrito">
-      <span className="cart-icon">🛒</span>
-      <span className="cart-count">{count}</span>
-    </button>
+    <NavLink to="/cart" className="cart-widget">
+      🛒
+      {totalUnits > 0 && <span className="cart-badge">{totalUnits}</span>}
+    </NavLink>
   );
 }
-
 export default CartWidget;

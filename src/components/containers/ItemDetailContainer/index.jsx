@@ -10,7 +10,6 @@ function ItemDetailContainer() {
 
   useEffect(() => {
     setLoading(true);
-
     getProductById(id)
       .then((res) => {
         setProduct(res);

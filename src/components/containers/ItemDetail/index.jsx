@@ -1,24 +1,53 @@
+import { useContext, useState } from "react";
+import { CartContext } from "../../context/CartContext";
+import ItemCount from "../ItemCount";
+import { NavLink } from "react-router";
+
 function ItemDetail({ product }) {
+  const { addItem } = useContext(CartContext);
+  const [added, setAdded] = useState(false);
+
+  const handleAdd = (qty) => {
+    addItem(
+      {
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        image: product.image,
+      },
+      qty
+    );
+    setAdded(true);
+  };
+
   return (
-    <section className="item-detail">
-      <div className="item-detail-image-wrapper">
+    <main className="item-detail-container">
+      <section className="item-detail">
         <img
           src={product.image}
           alt={product.title}
-          className="item-detail-image"
+          style={{ maxWidth: 280 }}
         />
-      </div>
 
-      <div className="item-detail-info">
-        <h2 className="item-detail-title">{product.title}</h2>
-        <p className="item-detail-category">Categoría: {product.category}</p>
-        <p className="item-detail-description">{product.description}</p>
-        <p className="item-detail-price">${product.price}</p>
+        <div>
+          <h2>{product.title}</h2>
+          <p>{product.description}</p>
+          <p>
+            <b>${product.price}</b>
+          </p>
 
-        {/* más adelante va acá el ItemCount para agregar al carrito */}
-        <button className="item-detail-add-btn">Agregar al carrito</button>
-      </div>
-    </section>
+          {!added ? (
+            <ItemCount
+              stock={product.stock ?? 10}
+              initial={1}
+              onAdd={handleAdd}
+            />
+          ) : (
+            <NavLink to="/cart">Ir al carrito</NavLink>
+          )}
+        </div>
+      </section>
+    </main>
   );
 }
 

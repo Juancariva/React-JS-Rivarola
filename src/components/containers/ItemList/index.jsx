@@ -1,4 +1,4 @@
-import Item from "../Item/Item";
+import Item from "../Item/Index";
 
 function ItemList({ products }) {
   return (
@@ -10,5 +10,4 @@ function ItemList({ products }) {
   );
 }
 
-export default Item;
-List;
+export default ItemList;
